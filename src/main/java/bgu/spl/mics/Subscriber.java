@@ -1,5 +1,11 @@
 package bgu.spl.mics;
 
+import bgu.spl.mics.application.passiveObjects.Diary;
+import bgu.spl.mics.application.publishers.TimeService;
+
+import java.util.HashMap;
+
+
 /**
  * The Subscriber is an abstract class that any subscriber in the system
  * must extend. The abstract Subscriber class is responsible to get and
@@ -15,9 +21,9 @@ package bgu.spl.mics;
  * Only private fields and methods may be added to this class.
  * <p>
  */
-public abstract class Subscriber extends RunnableSubPub {
+public abstract class Subscriber extends RunnableSubPub  {
     private boolean terminated = false;
-
+    private HashMap<Class,Callback> hashCallBack=new HashMap<Class, Callback>();// I changed to HashMap because Concurrent is not need
     /**
      * @param name the Subscriber name (used mainly for debugging purposes -
      *             does not have to be unique)
@@ -48,7 +54,9 @@ public abstract class Subscriber extends RunnableSubPub {
      *                 queue.
      */
     protected final <T, E extends Event<T>> void subscribeEvent(Class<E> type, Callback<E> callback) {
-        //TODO: implement this.
+       MessageBrokerImpl.getInstance().subscribeEvent(type,this);
+       hashCallBack.put(type,callback);
+
     }
 
     /**
@@ -72,7 +80,9 @@ public abstract class Subscriber extends RunnableSubPub {
      *                 queue.
      */
     protected final <B extends Broadcast> void subscribeBroadcast(Class<B> type, Callback<B> callback) {
-        //TODO: implement this.
+        MessageBrokerImpl.getInstance().subscribeBroadcast(type,this);
+        hashCallBack.put(type,callback);
+
     }
 
     /**
@@ -86,7 +96,7 @@ public abstract class Subscriber extends RunnableSubPub {
      *               {@code e}.
      */
     protected final <T> void complete(Event<T> e, T result) {
-        //TODO: implement this.
+        MessageBrokerImpl.getInstance().complete(e,result);
     }
 
     /**
@@ -98,14 +108,23 @@ public abstract class Subscriber extends RunnableSubPub {
     }
 
     /**
-     * The entry point of the Subscriber. TODO: you must complete this code
+     * The entry point of the Subscriber.
      * otherwise you will end up in an infinite loop.
      */
     @Override
     public final void run() {
-        initialize();
+        try {
+            initialize();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         while (!terminated) {
-            System.out.println("NOT IMPLEMENTED!!!"); //TODO: you should delete this line :)
+            try {
+                Message m=MessageBrokerImpl.getInstance().awaitMessage(this);
+                hashCallBack.get(m.getClass()).call(m);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

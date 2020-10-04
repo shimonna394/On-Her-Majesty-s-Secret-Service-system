@@ -15,7 +15,7 @@ public class MessageBrokerTest {
 
     @BeforeEach
     public void setUp(){
-        theBroker=new MessageBrokerImpl();
+        //theBroker=new MessageBrokerImpl();
         event = new intEvent();
         broadcast = new stringBroadcast();
         sub = new Subscriber("testSub") {
@@ -90,11 +90,7 @@ public class MessageBrokerTest {
         theBroker.register(s); //registering the subscriber which means a que is created for s.
         theBroker.subscribeEvent(intEvent.class, s);//subscribe s to the event
         theBroker.sendEvent(event);//adding the event to the subscribe queue
-                try {
-                    assertEquals(theBroker.awaitMessage(s), event.getMessage()); //testing the next message in s queue is equal to the event that was sent to him.
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                assertEquals(theBroker.awaitMessage(s), event.getMessage()); //testing the next message in s queue is equal to the event that was sent to him.
 
             }
 
@@ -116,25 +112,17 @@ public class MessageBrokerTest {
         theBroker.subscribeBroadcast(broadcast.getClass(), s);//subscribe s to the broadcast
         theBroker.sendBroadcast(broadcast); //Adds the broadcast to the message queues of sub and s
         //now we'll check both s and sub have the broadcast message waiting for them in the queue
-        try {
-            assertEquals(theBroker.awaitMessage(s), broadcast.getMessage());//testing the next message in s queue is equal to the broadcast that was sent to him.
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        try {
-            assertEquals(theBroker.awaitMessage(sub), broadcast.getMessage());//testing the next message in sub queue is equal to the broadcast that was sent to him.
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        assertEquals(theBroker.awaitMessage(s), broadcast.getMessage());//testing the next message in s queue is equal to the broadcast that was sent to him.
+        assertEquals(theBroker.awaitMessage(sub), broadcast.getMessage());//testing the next message in sub queue is equal to the broadcast that was sent to him.
     }
 
     /**
      * <p>
      *  testing complete method
      */
-    @Test
+   @Test
     public void testComplete(){
-        theBroker.complete(event,"completed");// complete the event
-        assertEquals("completed",event.getFuture());//check if the result is equal to the future object of the event
+       theBroker.complete(event,"completed");// complete the event
+        assertEquals("completed",theBroker.sendEvent(event));//check if the result is equal to the future object of the event
     }
 }

@@ -1,6 +1,10 @@
 package bgu.spl.mics.application.publishers;
 
 import bgu.spl.mics.Publisher;
+import bgu.spl.mics.application.messages.TerminateBroadcast;
+import bgu.spl.mics.application.messages.TickBroadcast;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * TimeService is the global system timer There is only one instance of this Publisher.
@@ -12,21 +16,30 @@ import bgu.spl.mics.Publisher;
  * You MAY change constructor signatures and even add new public constructors.
  */
 public class TimeService extends Publisher {
+		int duration;
+		private AtomicInteger currentTick;
+		public TimeService(int duration) {
+			super("");
+			this.duration = duration;
+			this.currentTick=new AtomicInteger(0);
+		}
 
-	public TimeService() {
-		super("Change_This_Name");
-		// TODO Implement this
-	}
+		@Override
+		protected void initialize() {
+			while (currentTick.intValue() < duration) {
+				getSimplePublisher().sendBroadcast(new TickBroadcast(currentTick));
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				currentTick.set(currentTick.intValue() + 1);
+			}
+			getSimplePublisher().sendBroadcast(new TerminateBroadcast());
+		}
 
-	@Override
-	protected void initialize() {
-		// TODO Implement this
-		
-	}
-
-	@Override
-	public void run() {
-		// TODO Implement this
-	}
-
+		@Override
+		public void run() {
+			initialize();
+		}
 }

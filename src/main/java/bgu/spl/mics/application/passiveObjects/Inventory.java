@@ -1,5 +1,13 @@
 package bgu.spl.mics.application.passiveObjects;
 
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -11,13 +19,15 @@ import java.util.List;
  * You can add ONLY private fields and methods to this class as you see fit.
  */
 public class Inventory {
-	private List<String> gadgets;
+	private List<String> gadgets=new LinkedList<>();
+	private static class SingletonHolder {
+		private static Inventory instance = new Inventory();
+	}
 	/**
      * Retrieves the single instance of this class.
      */
 	public static Inventory getInstance() {
-		//TODO: Implement this
-		return null;
+		return SingletonHolder.instance;
 	}
 
 	/**
@@ -28,7 +38,9 @@ public class Inventory {
      * 						of the inventory.
      */
 	public void load (String[] inventory) {
-		//TODO: Implement this
+		for(int i=0;i<inventory.length;i++){
+			gadgets.add(inventory[i]);
+		}
 	}
 	
 	/**
@@ -38,8 +50,11 @@ public class Inventory {
      * @return 	‘false’ if the gadget is missing, and ‘true’ otherwise
      */
 	public boolean getItem(String gadget){
-		//TODO: Implement this
-		return true;
+		if(gadgets.contains(gadget)){
+			gadgets.remove(gadget);
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -49,7 +64,13 @@ public class Inventory {
 	 * list of all the of the gadgeds.
 	 * This method is called by the main method in order to generate the output.
 	 */
-	public void printToFile(String filename){
-		//TODO: Implement this
+	public void printToFile(String filename) {
+	    Gson gson=new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY).create();
+	    String inv=gson.toJson(Inventory.getInstance());
+	    inv=inv.substring(inv.indexOf(':')+1,inv.length()-1);
+	    try(FileWriter writer=new FileWriter(filename)){
+	        writer.write(inv);
+        }
+        catch (Exception e){e.printStackTrace();}
 	}
 }

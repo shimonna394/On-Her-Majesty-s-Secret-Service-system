@@ -88,7 +88,7 @@ public class SquadTest {
 
     /**
      * <p>
-     *  test Squad is a singletone
+     *  test JsonSquad is a singletone
      */
     @Test
     public void testSingelton(){
@@ -100,7 +100,7 @@ public class SquadTest {
      *  testing agents on mission really changes their status
      */
     @Test
-    public void testSendAndReleaseAgents(){
+    public void testSendAndReleaseAgents() throws InterruptedException {
         Agent[] newAgents = new Agent[2];
         Agent Ag5 =new Agent();
         Agent Ag6 =new Agent();

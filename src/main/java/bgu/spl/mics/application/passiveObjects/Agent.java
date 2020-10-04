@@ -11,6 +11,7 @@ private String serialNumber;
 private String name;
 private Boolean available=true;
 
+
 	/**
 	 * Sets the serial number of an agent.
 	 */
