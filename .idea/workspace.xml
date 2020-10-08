@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="481a9eb2-c697-470a-8342-2d48de4302d7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/diaryOutputFile.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventoryOutputFile.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_6_0_M1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_6_0_M1.xml" afterDir="false" />
@@ -61,10 +63,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/mics/json/ParseJ.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/mics/json/ParseJ.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/mics/stringBroadcast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/mics/stringBroadcast.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/bgu/spl/mics/FutureTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/bgu/spl/mics/InventoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/bgu/spl/mics/MessageBrokerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/bgu/spl/mics/SquadTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,17 +77,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="316" />
-    <option name="width" value="1614" />
-    <option name="height" value="876" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -100,7 +91,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RunManager">
-    <configuration name="MI6Runner" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration name="MI6Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bgu.spl.mics.application.MI6Runner" />
       <module name="MI6" />
       <option name="PROGRAM_PARAMETERS" value="inputFile.json inventoryOutputFile.json diaryOutputFile.json" />
@@ -114,6 +105,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MI6Runner" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -147,30 +143,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="265" y="43" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602180575758">
+    <state x="534" y="255" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1602181040333">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="265" y="43" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1602180575758" />
-    <state x="534" y="255" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1602180433105">
+    <state x="534" y="255" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1602181040333" />
+    <state x="275" y="99" key="Vcs.Push.Dialog.v2" timestamp="1602181237934">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="534" y="255" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1602180433105" />
-    <state width="1323" height="178" key="GridCell.Tab.0.bottom" timestamp="1602180611269">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1602180611269" />
-    <state width="1323" height="178" key="GridCell.Tab.0.center" timestamp="1602180611269">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="178" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1602180611269" />
-    <state width="1323" height="178" key="GridCell.Tab.0.left" timestamp="1602180611269">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="178" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1602180611269" />
-    <state width="1323" height="178" key="GridCell.Tab.0.right" timestamp="1602180611269">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="178" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1602180611269" />
+    <state x="275" y="99" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1602181237934" />
   </component>
   <component name="masterDetails">
     <states>
