@@ -50,7 +50,7 @@ for every run of the program you must include an inputFile.json.
 
 ## Inspiration
 As part of our System Programing course we received this project as an assignment
-##Goals
+## Goals
 * Programing an asynchronous project.
 * Managing concurrency issues.
 	* Deadlocks.
